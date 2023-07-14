@@ -1,5 +1,319 @@
+@font-face {
+  font-family: 'Century Expanded';
+  src: url('assets/fonts/CenturyExp-Reg.otf');
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Century Expanded';
+  src: url('assets/fonts/CenturyExp-RegIta.otf');
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Clearface';
+  src: url('assets/fonts/ClearfaceITCPro-Heavy.otf');
+}
+@font-face {
+  font-family: 'Frutiger';
+  src: url('assets/fonts/Frutiger_Roman.ttf');
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Frutiger';
+  src: url('assets/fonts/Frutiger_Italic.ttf');
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Frutiger Condensed';
+  src: url('assets/fonts/Frutiger_Condensed.ttf');
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Frutiger Condensed Bold';
+  src: url('assets/fonts/Frutiger_Bold_Condensed.ttf');
+  font-style: normal;
+  font-weight: bold;
+}
 .App {
   text-align: center;
+  background-image: url('assets/images/MBE_HH_bkgd.jpg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 1920px;
+  height: 1080px;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Century Expanded', sans-serif;
+  color: #2a1c14;
+}
+
+.Container {
+  margin: 100px auto;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  flex-direction: column;
+}
+
+.HomeContainer {
+  width: 1324px;
+}
+
+.separator {
+  border: 1px solid black;
+  opacity: 1;
+  position: relative;
+  margin: 40px auto;
+}
+.separator:before, .separator:after {
+  content: ' ';
+  position: absolute;
+  top: -8px;
+  width: 15px;
+  height: 15px;
+  background-color: black;
+  border-radius: 50%;
+}
+.separator:before {
+  left: -1px;
+}
+.separator:after {
+  right: -1px;
+}
+
+.card-group .card:nth-child(2) {
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+.card a {
+  text-decoration: none;
+}
+
+.card-body {
+  background-color: #d59132;
+}
+.card-title {
+  font-family: "Frutiger Condensed Bold", sans-serif;
+  font-size: 32px;
+  color: white;
+}
+
+.album {
+  width: 680px;
+  margin: 0 auto;
+  background-color: #d59132;
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+}
+.album img {
+  width: 50%;
+  height: auto;
+  margin-right: 20px;
+}
+.album .album-title {
+  font-family: "Frutiger Condensed Bold", sans-serif;
+  font-size: 32px;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.Image {
+  width: 1540px;
+  height: 700px;
+  overflow: hidden;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+}
+.Image img {
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  position: absolute;
+  transition: opacity 1s ease-in-out;
+}
+.Image img.Current {
+  opacity: 1;
+}
+.ZoomContainer {
+  margin-top: 100px;
+  display: flex;
+  align-items: flex-end;
+}
+.ZoomContainer span {
+  font-size: 50px;
+  line-height: 0;
+  margin: 0 20px;
+}
+input.Zoom {
+  -webkit-appearance: none;
+  background: transparent;
+  cursor: pointer;
+  width: 320px;
+}
+input.Zoom::-webkit-slider-runnable-track {
+  height: 3px;
+  background: #2a1c14;
+}
+input.Zoom::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 30px;
+  width: 30px;
+  background: #d59132 !important;
+  margin-top: -15px;
+  border-radius: 50%;
+  box-shadow: 0 5px 10px gray;
+}
+
+.ButtonContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+.btn {
+  border-radius: 0;
+  font-family: "Frutiger Condensed Bold", sans-serif;
+  font-size: 26px;
+  background-color: #d59132;
+  color: white;
+  padding: 10px;
+  border: none;
+}
+.btn:hover {
+  background-color: #30647e;
+  color: white;
+}
+
+.Title {
+  font-size: 40px;
+  line-height: 1;
+  color: #5d3653;
+  font-family: 'Clearface', serif;
+}
+
+.Title:before {
+  content: ' ';
+  border-left: 4px solid #5d3653;
+  padding-right: 10px;
+  padding-left: 10px;
+  margin-left: 20px;
+}
+
+.Subtitle {
+  font-size: 32px;
+  font-style: italic;
+  line-height: 1;
+}
+
+.Intro {
+  font-size: 22px;
+  width: 640px;
+  margin: 0 auto 40px auto;
+}
+
+.HomeHeader .Title {
+  font-size: 60px;
+  margin-bottom: 30px;
+}
+.HomeHeader .Title:before {
+  display: none;
+}
+
+.HomeSubtitle {
+  font-size: 32px;
+  font-style: italic;
+  line-height: 1;
+}
+
+.HomeLink {
+  font-size: 22px;
+  color: #2a1c14;
+  text-decoration: none;
+  position: absolute;
+  top: 50px;
+  left: 150px;
+  font-family: "Frutiger Condensed Bold", sans-serif;
+
+}
+.HomeLink span {
+  color: white;
+  padding: 5px 6px 5px 4px;
+  border-radius: 50%;
+  background-color: #d59132;
+  font-size: 20px;
+  height: 40px;
+  width: 40px;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.Button {
+  background: white;
+  color: #d59132;
+  border: 2px solid white;
+  border-radius: 0;
+  padding: 10px 20px;
+  font-size: 27px;
+  font-family: 'Frutiger Condensed Bold', sans-serif;
+  cursor: pointer;
+  text-decoration: none;
+  margin: 0 4px;
+  width: 420px;
+}
+
+.Button.Active {
+  background: #30647e;
+  color: white;
+  border: 2px solid #d59132;
+}
+
+.Header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.VideoContainer, .ImageContainer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.PageNav {
+  font-family: "Frutiger Condensed Bold", sans-serif;
+  font-size: 22px;
+  color: #2a1c14;
+  width: 100px;
+  text-align: center;
+  padding: 0 20px;
+  width: 150px;
+}
+
+.PageNav a {
+  color: #2a1c14;
+  text-decoration: none;
+}
+
+.PageNav a:before {
+  content: '';
+  background-image: url("assets/images/MBE_arrow_prev.png");
+  background-size: contain;
+  height: 25px;
+  width: 94px;
+  display: block;
+  margin: 0 auto 10px auto;
+}
+
+.PageNav .Next a:before {
+  background-image: url("assets/images/MBE_arrow_next.png");
 }
 
 .App-logo {
@@ -22,10 +336,81 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  font-family: 'Century Expanded', sans-serif;
 }
 
 .App-link {
   color: #61dafb;
+}
+.slideshow img {
+  transform: scale(1.2);
+}
+.slideshow img.active {
+  animation: growIn 6s ease-in-out;
+}
+
+.acorn {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  padding: 15px;
+  background-color: #5d3653;
+  border-radius: 50%;
+  z-index: 1;
+}
+.acorn.active {
+  background-color: #d59132;
+  box-shadow: white 0 0 10px;
+}
+
+.acorn-popup {
+  position: absolute;
+  bottom: 50px;
+  right: 50px;
+  background: #5d3653;
+  font-family: 'Century Expanded', sans-serif;
+  color: white;
+  font-size: 20px;
+  width: 380px;
+  height: 250px;
+  align-items: center;
+  padding: 40px;
+  display: none;
+  text-align: left;
+}
+.acorn-popup.active {
+  display: flex;
+}
+.acorn-popup .close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: url("assets/images/MBE_close.png") no-repeat;
+  background-size: contain;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.tooltip {
+  background: #30647e;
+  font-family: 'Century Expanded', sans-serif;
+  font-size: 16px;
+  border-radius: 0;
+  width: 300px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+}
+
+.fade-enter {
+  opacity: 0;
+  z-index: 1;
+}
+
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transition: opacity 250ms ease-in;
 }
 
 @keyframes App-logo-spin {
@@ -34,5 +419,23 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes growIn {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.2);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }

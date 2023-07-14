@@ -1,24 +1,25 @@
 import React from 'react';
-import logo from './logo.svg';
+import {Routes, Route, useLocation} from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { rootPath } from "./config";
 import './App.css';
-
+import Home from './components/Home';
+import PhotoAlbum from "./components/PhotoAlbum";
+import Video from "./components/Video";
+import {CSSTransition, TransitionGroup} from "react-transition-group";
 function App() {
+  let location = useLocation();
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <TransitionGroup>
+          <CSSTransition key={location.pathname} classNames="fade" timeout={300}>
+            <Routes>
+              <Route path={rootPath} element={<Home />} />
+              <Route path={`${rootPath}/album`} element={<PhotoAlbum />} />
+              <Route path={`${rootPath}/video/:id`} element={<Video />} />
+            </Routes>
+          </CSSTransition>
+        </TransitionGroup>
     </div>
   );
 }
