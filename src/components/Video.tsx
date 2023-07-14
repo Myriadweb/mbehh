@@ -6,9 +6,9 @@ import '../App.css';
 import {rootPath} from "../config";
 
 const videoList = [
-  {id: 1, title: "1907 Expansion", video: "/MBE_FOW_Attract.mp4"},
-  {id: 2, title: "1908 Expansion", video: "/MBE_FOW_Attract.mp4"},
-  {id: 3, title: "2015-2023 Expansion", video: "/MBE_FOW_Attract.mp4"}]
+  {id: 1, title: "1907 Expansion", video: "MBE_FOW_Attract2.mp4"},
+  {id: 2, title: "1908 Expansion", video: "MBE_FOW_Attract2.mp4"},
+  {id: 3, title: "2015-2023 Expansion", video: "MBE_FOW_Attract2.mp4"}]
 function Video() {
   const videoParams = useParams();
   // @ts-ignore
@@ -31,7 +31,7 @@ function Video() {
             </div>
           )}
         </div>
-        <ReactPlayer url={videoList[videoIndex].video} playing={true} controls={true} width={1440} height={810} />
+        <ReactPlayer url={require(`../assets/videos/${videoList[videoIndex].video}`)} playing={true} controls={true} width={1440} height={810} />
         <div className="PageNav">
           {nextVideo && (
             <div key={nextVideo.id} className="Next">
