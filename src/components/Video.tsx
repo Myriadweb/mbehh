@@ -40,6 +40,9 @@ function Video() {
           )}
         </div>
       </div>
+      <div className="acorn">
+        <img src={require('../assets/images/MBE_acorn.png')} alt="acorn" />
+      </div>
     </div>
   );
 }

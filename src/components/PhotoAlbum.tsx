@@ -66,7 +66,7 @@ function PhotoAlbum() {
                 style={{transform: `scale(${zoomLevel}) translateX(-${zoomOffset}%)`}}
               />
             )
-          })};
+          })}
         </div>
         <div className="PageNav">
           {currentPhotoIndex < photos.length && (
