@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {Routes, Route, useLocation} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { rootPath } from "./config";
@@ -8,6 +8,9 @@ import PhotoAlbum from "./components/PhotoAlbum";
 import Video from "./components/Video";
 import {CSSTransition, TransitionGroup} from "react-transition-group";
 function App() {
+  useEffect(() => {
+    document.title = "House History";
+  })
   let location = useLocation();
   return (
     <div className="App">
