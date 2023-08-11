@@ -1,18 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import { Routes, Route, Link, useParams } from 'react-router-dom';
-import {Modal, Tooltip, OverlayTrigger, Button} from "react-bootstrap";
 import '../App.css';
 import photos from '../assets/hh.json';
 import {rootPath} from "../config";
-import ReactPlayer from "react-player";
-import {CSSTransition} from "react-transition-group";
 
 function PhotoAlbum() {
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
-  const [showKidsFacts, setShowKidsFacts] = React.useState(false);
   const [zoomLevel, setZoomLevel] = useState(1);
   const [zoomOffset, setZoomOffset] = useState(0);
-  const offset = 0.1;
   function PrevPhoto() {
     setZoomLevel(1);
     setZoomOffset(0);
@@ -37,15 +32,16 @@ function PhotoAlbum() {
     const newZoomLevel = parseFloat(event.target.value);
     setZoomLevel(newZoomLevel);
     setZoomOffset((newZoomLevel - 1) * 10);
+    console.log('zoomLevel', zoomLevel);
   }
 
-  // @ts-ignore
   return (
     <div className='Container'>
-      <div className="Header">
+      <div className="Header" style={{marginBottom: 20}}>
         <div className="Subtitle">400 Beacon St</div>
         <div className="Title">Historic Album of the Home</div>
       </div>
+      <div className="Intro" style={{marginBottom: 20}}>Mary Baker Eddy’s handyman John Salchow published these photographs in a 1911 “souvenir album.”</div>
       <Link to={`${rootPath}`} className="HomeLink"><span>&#x25c0;</span> Back to Menu</Link>
       <div className="ImageContainer">
         <div className="PageNav">
@@ -80,18 +76,6 @@ function PhotoAlbum() {
         <span>&ndash;</span>
         <input className="Zoom" type="range" min="1" max="3" step="0.1" value={zoomLevel} onChange={handleZoom}  />
         <span>+</span>
-      </div>
-      <div className="KidsFacts">
-        <div className="acorn active" onClick={() => setShowKidsFacts(true)}>
-          <img src={require('../assets/images/MBE_acorn.png')} alt="acorn" />
-        </div>
-        <div className={showKidsFacts ? "acorn-popup active" : "acorn-popup"} onClick={() => setShowKidsFacts(false)}>
-          <div className="close"></div>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        </div>
-      </div>
-      <div className="acorn">
-        <img src={require('../assets/images/MBE_acorn.png')} alt="acorn" />
       </div>
     </div>
 

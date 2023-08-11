@@ -43,14 +43,11 @@ function Home() {
             <div className="album">
               <img src={require('../assets/images/photo-album/MBE_HH_04.png')} alt="..." />
               <div className="album-title">
-                Explore the Historic <br />Album of the Home
+                Explore a book of <br />historic photographs
                 <img src={require('../assets/images/MBE_arrow_white.png')} alt="arrow" />
               </div>
             </div>
           </Link>
-        </div>
-        <div className="acorn">
-          <img src={require('../assets/images/MBE_acorn.png')} alt="acorn" />
         </div>
       </div>
   );
