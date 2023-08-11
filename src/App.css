@@ -47,7 +47,7 @@
 }
 
 .Container {
-  margin: 100px auto;
+  margin: 75px auto;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -128,6 +128,7 @@
   align-items: center;
   transition: all 0.3s ease-in-out;
   position: relative;
+  flex-direction: column;
 }
 .Image img {
   width: 100%;
@@ -187,6 +188,23 @@ input.Zoom::-webkit-slider-thumb {
 .btn:hover {
   background-color: #30647e;
   color: white;
+}
+
+.ExpansionButtons {
+  width: 1440px;
+  margin-top: 20px;
+}
+.ExpansionButtons .btn {
+  background-color: white;
+  color: #d59132;
+  margin: 0 2px;
+  border: 2px solid white;
+  padding: 5px;
+}
+.ExpansionButtons .btn.active, .ExpansionButtons .btn:hover {
+  background-color: #5d3653;
+  color: white;
+  border: 2px solid #d59132;
 }
 
 .Title {
@@ -291,7 +309,6 @@ input.Zoom::-webkit-slider-thumb {
   font-family: "Frutiger Condensed Bold", sans-serif;
   font-size: 22px;
   color: #2a1c14;
-  width: 100px;
   text-align: center;
   padding: 0 20px;
   width: 150px;
