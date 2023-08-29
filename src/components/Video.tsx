@@ -7,7 +7,7 @@ import {ToggleButtonGroup, ToggleButton} from "react-bootstrap";
 
 const videoList = [
   {id: 1, title: "1907 Expansion", video: "mbe_1907.mp4"},
-  {id: 2, title: "1908 Expansion", video: "mbe_1907.mp4"},
+  {id: 2, title: "1908 Expansion", video: "mbe_1908.mp4"},
   {id: 3, title: "2015-2023 Expansion", video: "mbe_1907.mp4"}
 ]
 function Video() {

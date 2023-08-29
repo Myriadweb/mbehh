@@ -4,7 +4,7 @@ import {TransformWrapper, TransformComponent, ReactZoomPanPinchRef} from "react-
 import '../App.css';
 import photos from '../assets/hh.json';
 import {rootPath} from "../config";
-import {TransitionGroup} from "react-transition-group";
+import {CSSTransition, SwitchTransition, TransitionGroup} from "react-transition-group";
 import {zoomIn} from "react-zoom-pan-pinch/dist/src/core/handlers/handlers.logic";
 
 function PhotoAlbum2() {
@@ -45,6 +45,7 @@ function PhotoAlbum2() {
     console.log('zoomLevel', zoomLevel);
   }
 
+
   return (
     <div className='Container'>
       <div className="Header" style={{marginBottom: 20}}>
@@ -66,15 +67,7 @@ function PhotoAlbum2() {
             {({ zoomIn, zoomOut, resetTransform, ...rest }) => (
               <React.Fragment>
                 <TransformComponent>
-                  <div ref={Image} id="Image" className="Image">
-                    <img
-                      src={require(`../assets/images/photo-album/${photos[currentPhotoIndex].IMAGE}`)}
-                      alt={`Photo ${currentPhotoIndex}`}
-                      className="Current"
-                      id="AlbumPhoto"
-                      style={{position: 'relative'}}
-                    />
-                  </div>
+                  <AlbumImage image={photos[currentPhotoIndex].IMAGE} />
                 </TransformComponent>
               </React.Fragment>
             )}
@@ -96,6 +89,20 @@ function PhotoAlbum2() {
       </div>
     </div>
   );
+}
+
+function AlbumImage({image}: {image: string}) {
+  return (
+    <div className="Image" key={image}>
+      <img
+        src={require(`../assets/images/photo-album/${image}`)}
+        alt={`Photo ${image}`}
+        className="Current"
+        id="AlbumPhoto"
+        style={{position: 'relative'}}
+      />
+    </div>
+  )
 }
 export default PhotoAlbum2;
 
