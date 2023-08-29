@@ -133,9 +133,8 @@
 .Image img {
   width: 100%;
   height: 100%;
-  opacity: 0;
   position: absolute;
-  transition: opacity 1s ease-in-out;
+  animation: fadeIn 1s;
 }
 .Image img.Current {
   opacity: 1;
