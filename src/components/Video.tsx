@@ -6,8 +6,8 @@ import {rootPath} from "../config";
 import {ToggleButtonGroup, ToggleButton} from "react-bootstrap";
 
 const videoList = [
-  {id: 1, title: "1907 Expansion", video: "mbe_1907.mp4"},
-  {id: 2, title: "1908 Expansion", video: "mbe_1908.mp4"},
+  {id: 1, title: "1907 Expansion", video: "mbe_1907b.mp4"},
+  {id: 2, title: "1908 Expansion", video: "mbe_1908b.mp4"},
   {id: 3, title: "2015-2023 Expansion", video: "mbe_1907.mp4"}
 ]
 function Video() {
@@ -23,10 +23,10 @@ function Video() {
   return (
     <div className='Container'>
       <div className="Header">
-        <div className="Subtitle">400 Beacon St</div>
+        <div className="Subtitle">400 Beacon Street</div>
         <div className="Title">{videoList[videoIndex].title}</div>
       </div>
-      <Link to={`${rootPath}`} className="HomeLink"><span>&#x25c0;</span> Back to Menu</Link>
+      <Link to={`${rootPath}/home`} className="HomeLink"><span>&#x25c0;</span> Back to Menu</Link>
       <div className="VideoContainer">
         <div className="PageNav">
           {prevVideo && (
@@ -38,7 +38,7 @@ function Video() {
         <div className="Video">
           {videoIndex === 2 && (
             <>
-              <ReactPlayer url={require(`../assets/videos/${expVideo}`)} playing={true} controls={true} width={1440} height={810} />
+              <ReactPlayer url={require(`../assets/videos/${expVideo}`)} playing={true} controls={true} width={1440} height={810}  />
               <ToggleButtonGroup type="radio" name="options" defaultValue={0} className="ExpansionButtons">
                 <ToggleButton id="tbg-radio-1" value={0} active={expVideo === "mbe_1907.mp4"} onClick={() => setExpVideo("mbe_1907.mp4")}>Preservation</ToggleButton>
                 <ToggleButton id="tbg-radio-2" value={1} active={expVideo === "vid2.mp4"} onClick={() => setExpVideo("mbe_1907.mp4")}>Entrance</ToggleButton>
