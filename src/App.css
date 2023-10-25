@@ -229,7 +229,7 @@ input.Zoom::-webkit-slider-thumb {
 
 .Intro {
   font-size: 22px;
-  width: 640px;
+  width: 900px;
   margin: 0 auto 40px auto;
 }
 
@@ -304,6 +304,10 @@ input.Zoom::-webkit-slider-thumb {
   align-items: center;
 }
 
+.react-transform-wrapper {
+  box-shadow: 0 0 18px 0px #666;
+}
+
 .PageNav {
   font-family: "Frutiger Condensed Bold", sans-serif;
   font-size: 22px;
@@ -376,7 +380,7 @@ input.Zoom::-webkit-slider-thumb {
 }
 .acorn.active {
   background-color: #d59132;
-  box-shadow: white 0 0 10px;
+  animation: pulse 2s infinite;
 }
 
 .acorn-popup {
@@ -453,5 +457,14 @@ input.Zoom::-webkit-slider-thumb {
   }
   100% {
     opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  from {
+    box-shadow: white 0 0 0;
+  }
+  to {
+    box-shadow: white 0 0 20px;
   }
 }

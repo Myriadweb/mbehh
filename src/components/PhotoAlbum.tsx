@@ -38,7 +38,7 @@ function PhotoAlbum() {
   return (
     <div className='Container'>
       <div className="Header" style={{marginBottom: 20}}>
-        <div className="Subtitle">400 Beacon St</div>
+        <div className="Subtitle">400 Beacon Street</div>
         <div className="Title">Historic Album of the Home</div>
       </div>
       <div className="Intro" style={{marginBottom: 20}}>Mary Baker Eddy’s handyman John Salchow published these photographs in a 1911 “souvenir album.”</div>
