@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/mbehh/static/css/main.ab1ba346.css",
-    "main.js": "/mbehh/static/js/main.cfcc182a.js",
+    "main.js": "/mbehh/static/js/main.844a14a9.js",
     "static/media/mbe_1907b.mp4": "/mbehh/static/media/mbe_1907b.f9c41bbdebeea1c0a845.mp4",
     "static/media/mbe_1908b.mp4": "/mbehh/static/media/mbe_1908b.1ee4fd2b2a4f02231e38.mp4",
     "static/media/mbe_1907.mp4": "/mbehh/static/media/mbe_1907.7d8c2a45317e1e4ad6d1.mp4",
@@ -53,10 +53,10 @@
     "static/media/Frutiger_Roman.ttf": "/mbehh/static/media/Frutiger_Roman.f13468548dc6d4cb5025.ttf",
     "index.html": "/mbehh/index.html",
     "main.ab1ba346.css.map": "/mbehh/static/css/main.ab1ba346.css.map",
-    "main.cfcc182a.js.map": "/mbehh/static/js/main.cfcc182a.js.map"
+    "main.844a14a9.js.map": "/mbehh/static/js/main.844a14a9.js.map"
   },
   "entrypoints": [
     "static/css/main.ab1ba346.css",
-    "static/js/main.cfcc182a.js"
+    "static/js/main.844a14a9.js"
   ]
 }
