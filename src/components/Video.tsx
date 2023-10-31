@@ -1,22 +1,77 @@
-import React from 'react';
+import React, {useRef, useState, MutableRefObject, Dispatch, SetStateAction} from 'react';
 import ReactPlayer from "react-player";
 import { Routes, Route, Link, useParams, To} from 'react-router-dom';
 import '../App.css';
 import {rootPath} from "../config";
 import {ToggleButtonGroup, ToggleButton} from "react-bootstrap";
-
 const videoList = [
   {id: 1, title: "1907 Expansion", video: "mbe_1907b.mp4"},
   {id: 2, title: "1908 Expansion", video: "mbe_1908b.mp4"},
   {id: 3, title: "2015-2023 Expansion", video: "mbe_1907.mp4"}
 ]
+
+type ControlsProps = {
+  playing: boolean;
+  setPlaying: Dispatch<SetStateAction<boolean>>;
+  playedSeconds: number;
+  duration: number;
+  playerRef: MutableRefObject<ReactPlayer>;
+};
+
+
+const Controls = (props: ControlsProps) => {
+  const seek = (e: React.ChangeEvent<HTMLInputElement>) => {
+    props.playerRef.current.seekTo(+e.target.value, "seconds");
+  };
+  const Play = () => {
+    return (
+      <img src={require('../assets/images/video/MBE_HH_play.png')} alt="play" />
+    )
+  }
+  const Pause = () => {
+    return (
+      <img src={require('../assets/images/video/MBE_HH_pause.png')} alt="pause" />
+    )
+  }
+  return (
+    <div className="Controls">
+      <button onClick={() => props.setPlaying(!props.playing)}>
+        {props.playing ? <Pause /> : <Play />}
+      </button>
+      <input
+        className="Zoom"
+        type="range"
+        value={props.playedSeconds}
+        min="0"
+        max={props.duration}
+        onChange={seek}
+      />
+    </div>
+  )
+}
+
 function Video() {
   const videoParams = useParams();
+  const playerRef = useRef() as MutableRefObject<ReactPlayer>;
+  const [playing, setPlaying] = useState(true);
+  const [durationSeconds, setDurationSeconds] = useState(0);
+  const [playedSeconds, setPlayedSeconds] = useState(0);
   // @ts-ignore
   const videoIndex = videoList.findIndex((data) => data.id === +videoParams?.id);
   const nextVideo = videoList[videoIndex + 1];
   const prevVideo = videoList[videoIndex - 1];
   const [expVideo, setExpVideo] = React.useState(videoList[videoIndex].video);
+  const [showStillImage, setShowStillImage] = React.useState(false);
+  const EndStillImage = () => {
+    return (
+      <div id="EndStillImage" className={`StillImage ${showStillImage ? 'active' : ''}`}>
+        <img src={require('../assets/images/video/MBE_HH_endstill.jpg')} alt="this" />
+        <div className="ReplayVideo" onClick={() => {setShowStillImage(false); setPlaying(true)}}>
+          <img src={require('../assets/images/video/MBE_HH_replay.png')} />
+        </div>
+      </div>
+    )
+  }
   const setVideo = (video: string) => {
     setExpVideo(video);
   }
@@ -37,20 +92,61 @@ function Video() {
         </div>
         <div className="Video">
           {videoIndex === 2 && (
-            <>
-              <ReactPlayer url={require(`../assets/videos/${expVideo}`)} playing={true} controls={true} width={1440} height={810}  />
+            <div className="MultiVideo">
+              <ReactPlayer
+                ref={playerRef}
+                url={require(`../assets/videos/${expVideo}`)}
+                controls={false}
+                width={1440}
+                height={810}
+                playing={playing}
+                onProgress={({ playedSeconds }) => setPlayedSeconds(playedSeconds)}
+                onSeek={setPlayedSeconds}
+                onDuration={setDurationSeconds} // This is called when the player has the duration
+                onEnded={() => {setShowStillImage(true); setPlaying(false)}}
+              />
+              <Controls
+                playerRef={playerRef}
+                playing={playing}
+                setPlaying={setPlaying}
+                playedSeconds={playedSeconds}
+                duration={durationSeconds}
+              />
+              <EndStillImage />
               <ToggleButtonGroup type="radio" name="options" defaultValue={0} className="ExpansionButtons">
-                <ToggleButton id="tbg-radio-1" value={0} active={expVideo === "mbe_1907.mp4"} onClick={() => setExpVideo("mbe_1907.mp4")}>Preservation</ToggleButton>
-                <ToggleButton id="tbg-radio-2" value={1} active={expVideo === "vid2.mp4"} onClick={() => setExpVideo("mbe_1907.mp4")}>Entrance</ToggleButton>
-                <ToggleButton id="tbg-radio-3" value={2} active={expVideo === "vid3.mp4"} onClick={() => setExpVideo("mbe_1907.mp4")}>Utilities</ToggleButton>
-                <ToggleButton id="tbg-radio-4" value={3} active={expVideo === "vid4.mp4"} onClick={() => setExpVideo("mbe_1907.mp4")}>Interior</ToggleButton>
-                <ToggleButton id="tbg-radio-5" value={4} active={expVideo === "vid5.mp4"} onClick={() => setExpVideo("mbe_1907.mp4")}>Furnishings</ToggleButton>
-                <ToggleButton id="tbg-radio-6" value={5} active={expVideo === "vid6.mp4"} onClick={() => setExpVideo("mbe_1907.mp4")}>Landscaping</ToggleButton>
+                <ToggleButton id="tbg-radio-1" value={0} active={expVideo === "mbe_1907.mp4"} onClick={() => {setExpVideo("mbe_1907.mp4"); setPlaying(true)}}>Preservation</ToggleButton>
+                <ToggleButton id="tbg-radio-2" value={1} active={expVideo === "mbe_1908.mp4"} onClick={() => {setExpVideo("mbe_1908.mp4"); setPlaying(true)}}>Entrance</ToggleButton>
+                <ToggleButton id="tbg-radio-3" value={2} active={expVideo === "vid3.mp4"} onClick={() => {setExpVideo("mbe_1907.mp4"); setPlaying(true)}}>Utilities</ToggleButton>
+                <ToggleButton id="tbg-radio-4" value={3} active={expVideo === "vid4.mp4"} onClick={() => {setExpVideo("mbe_1908.mp4"); setPlaying(true)}}>Interior</ToggleButton>
+                <ToggleButton id="tbg-radio-5" value={4} active={expVideo === "vid5.mp4"} onClick={() => {setExpVideo("mbe_1907.mp4"); setPlaying(true)}}>Furnishings</ToggleButton>
+                <ToggleButton id="tbg-radio-6" value={5} active={expVideo === "vid6.mp4"} onClick={() => {setExpVideo("mbe_1907.mp4"); setPlaying(true)}}>Landscaping</ToggleButton>
               </ToggleButtonGroup>
-            </>
+            </div>
           )}
           {videoIndex < 2 && (
-            <ReactPlayer url={require(`../assets/videos/${videoList[videoIndex].video}`)} playing={true} controls={true} width={1440} height={810} />
+            <>
+              <ReactPlayer
+                ref={playerRef}
+                url={require(`../assets/videos/${videoList[videoIndex].video}`)}
+                playing={playing}
+                controls={false}
+                width={1440}
+                height={810}
+                onProgress={({ playedSeconds }) => setPlayedSeconds(playedSeconds)}
+                onSeek={setPlayedSeconds}
+                onDuration={setDurationSeconds} // This is called when the player has the duration
+                onEnded={() => document.getElementsByClassName("StillImage")[0].classList.add("active")}
+
+              />
+              <Controls
+                playerRef={playerRef}
+                playing={playing}
+                setPlaying={setPlaying}
+                playedSeconds={playedSeconds}
+                duration={durationSeconds}
+              />
+              <EndStillImage />
+            </>
           )}
         </div>
         <div className="PageNav">
