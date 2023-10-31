@@ -302,6 +302,55 @@ input.Zoom::-webkit-slider-thumb {
   justify-content: center;
   flex-wrap: wrap;
   align-items: center;
+  position: relative;
+}
+
+.Video {
+  position: relative;
+}
+
+.StillImage {
+  position: absolute;
+  top: 0;
+  display: none;
+}
+.StillImage.active {
+  display: block;
+}
+
+.Controls {
+  position: absolute;
+  width: 100%;
+  bottom: 30px;
+}
+.MultiVideo .Controls {
+  bottom: 100px;
+}
+.Controls button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  position: absolute;
+  right: 30px;
+  bottom: -20px;
+
+}
+.Controls .Zoom {
+  width: calc(100% - 200px);
+}
+
+.Controls input.Zoom::-webkit-slider-thumb {
+  height: 40px;
+  width: 40px;
+  margin-top: -20px;
+  background: #d59132 !important;
+  box-shadow: none;
+}
+.ReplayVideo {
+  position: absolute;
+  bottom: 10px;
+  right: 30px;
 }
 
 .react-transform-wrapper {
