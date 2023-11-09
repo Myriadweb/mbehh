@@ -6,7 +6,7 @@ import {rootPath} from "../config";
 import {ToggleButtonGroup, ToggleButton} from "react-bootstrap";
 const videoList = [
   {id: 1, title: "1907 Expansion", video: "mbe_1907b.mp4"},
-  {id: 2, title: "1908 Expansion", video: "mbe_1908b.mp4"},
+  {id: 2, title: "1908 Renovation", video: "mbe_1908b.mp4"},
   {id: 3, title: "2015-2023 Expansion", video: "mbe_1907.mp4"}
 ]
 
@@ -114,12 +114,12 @@ function Video() {
               />
               <EndStillImage />
               <ToggleButtonGroup type="radio" name="options" defaultValue={0} className="ExpansionButtons">
-                <ToggleButton id="tbg-radio-1" value={0} active={expVideo === "mbe_1907.mp4"} onClick={() => {setExpVideo("mbe_1907.mp4"); setPlaying(true)}}>Preservation</ToggleButton>
-                <ToggleButton id="tbg-radio-2" value={1} active={expVideo === "mbe_1908.mp4"} onClick={() => {setExpVideo("mbe_1908.mp4"); setPlaying(true)}}>Entrance</ToggleButton>
-                <ToggleButton id="tbg-radio-3" value={2} active={expVideo === "vid3.mp4"} onClick={() => {setExpVideo("mbe_1907.mp4"); setPlaying(true)}}>Utilities</ToggleButton>
-                <ToggleButton id="tbg-radio-4" value={3} active={expVideo === "vid4.mp4"} onClick={() => {setExpVideo("mbe_1908.mp4"); setPlaying(true)}}>Interior</ToggleButton>
-                <ToggleButton id="tbg-radio-5" value={4} active={expVideo === "vid5.mp4"} onClick={() => {setExpVideo("mbe_1907.mp4"); setPlaying(true)}}>Furnishings</ToggleButton>
-                <ToggleButton id="tbg-radio-6" value={5} active={expVideo === "vid6.mp4"} onClick={() => {setExpVideo("mbe_1907.mp4"); setPlaying(true)}}>Landscaping</ToggleButton>
+                <ToggleButton id="tbg-radio-1" value={0} active={expVideo === "mbe_1907.mp4"} onClick={() => {setExpVideo("mbe_1907.mp4"); setPlaying(true)}}>Project Overview</ToggleButton>
+                <ToggleButton id="tbg-radio-2" value={1} active={expVideo === "mbe_1908.mp4"} onClick={() => {setExpVideo("mbe_1908.mp4"); setPlaying(true)}}>Systems Upgraded</ToggleButton>
+                <ToggleButton id="tbg-radio-3" value={2} active={expVideo === "vid3.mp4"} onClick={() => {setExpVideo("mbe_1907.mp4"); setPlaying(true)}}>Porches Rebuilt</ToggleButton>
+                <ToggleButton id="tbg-radio-4" value={3} active={expVideo === "vid4.mp4"} onClick={() => {setExpVideo("mbe_1908.mp4"); setPlaying(true)}}>Basement Transformed</ToggleButton>
+                <ToggleButton id="tbg-radio-5" value={4} active={expVideo === "vid5.mp4"} onClick={() => {setExpVideo("mbe_1907.mp4"); setPlaying(true)}}>Rooms Restored</ToggleButton>
+                <ToggleButton id="tbg-radio-6" value={5} active={expVideo === "vid6.mp4"} onClick={() => {setExpVideo("mbe_1907.mp4"); setPlaying(true)}}>Carriage House</ToggleButton>
               </ToggleButtonGroup>
             </div>
           )}
@@ -135,7 +135,7 @@ function Video() {
                 onProgress={({ playedSeconds }) => setPlayedSeconds(playedSeconds)}
                 onSeek={setPlayedSeconds}
                 onDuration={setDurationSeconds} // This is called when the player has the duration
-                onEnded={() => document.getElementsByClassName("StillImage")[0].classList.add("active")}
+                onEnded={() => {setShowStillImage(true); setPlaying(false)}}
 
               />
               <Controls

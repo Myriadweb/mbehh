@@ -31,7 +31,7 @@ function Home() {
             </Card>
             <Card>
               <Link to={`${rootPath}/video/3`}>
-                <Card.Img variant="top" src={require('../assets/images/video3_thumb.png')} alt="..." />
+                <Card.Img variant="top" src={require('../assets/images/MBE_HH_thumb2015.jpg')} alt="..." />
                 <Card.Body>
                   <Card.Title>2015-2023 Expansion</Card.Title>
                 </Card.Body>
