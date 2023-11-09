@@ -5,7 +5,6 @@ import { rootPath } from "./config";
 import './App.css';
 import Home from './components/Home';
 import PhotoAlbum from "./components/PhotoAlbum";
-import PhotoAlbum2 from "./components/PhotoAlbum2";
 import Video from "./components/Video";
 import {CSSTransition, TransitionGroup} from "react-transition-group";
 import ReactPlayer from "react-player";
@@ -21,7 +20,7 @@ function App() {
             <Routes>
               <Route path={rootPath} element={<Splash />} />
               <Route path={`${rootPath}/home`} element={<Home />} />
-              <Route path={`${rootPath}/album`} element={<PhotoAlbum2 />} />
+              <Route path={`${rootPath}/album`} element={<PhotoAlbum />} />
               <Route path={`${rootPath}/video/:id`} element={<Video />} />
             </Routes>
           </CSSTransition>
