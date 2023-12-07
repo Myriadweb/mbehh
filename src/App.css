@@ -33,6 +33,19 @@
   font-style: normal;
   font-weight: bold;
 }
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
 .App {
   text-align: center;
   background-image: url('assets/images/MBE_HH_bkgd.jpg');
@@ -44,12 +57,13 @@
   flex-direction: column;
   font-family: 'Century Expanded', sans-serif;
   color: #2a1c14;
+  overflow: hidden;
 }
 
 .Container {
+  min-height: 930px;
   margin: 75px auto;
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
   align-items: center;
   flex-direction: column;
@@ -148,6 +162,9 @@
   font-size: 50px;
   line-height: 0;
   margin: 0 20px;
+}
+.zoomControls {
+  cursor: pointer;
 }
 input.Zoom {
   -webkit-appearance: none;

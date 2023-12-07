@@ -45,6 +45,18 @@ function PhotoAlbum() {
     console.log('zoomLevel', zoomLevel);
   }
 
+  const zoomOut = () => {
+    setZoomLevel(zoomLevel - .1);
+    ImageWrapper.current?.centerView(zoomLevel);
+    console.log('zoomLevel', zoomLevel);
+  }
+
+  const zoomIn = () => {
+    setZoomLevel(zoomLevel + .1);
+    ImageWrapper.current?.centerView(zoomLevel);
+    console.log('zoomLevel', zoomLevel);
+  }
+
 
   return (
     <div className='Container'>
@@ -84,9 +96,9 @@ function PhotoAlbum() {
         </div>
       </div>
       <div className="ZoomContainer" style={{marginTop: 50}}>
-        <span>&ndash;</span>
-        <input className="Zoom" type="range" min="1" max="3" step=".005" value={zoomLevel} onChange={handleZoom}  />
-        <span>+</span>
+        <span id="zoomOut" className="zoomControls" onClick={zoomOut}>&ndash;</span>
+        <input className="Zoom" type="range" min="1" max="3" step=".05" value={zoomLevel} onChange={handleZoom}  />
+        <span id="zoomIn" className="zoomControls" onClick={zoomIn}>+</span>
       </div>
     </div>
   );
