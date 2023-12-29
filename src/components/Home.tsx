@@ -9,7 +9,7 @@ function Home() {
         <div className="HomeHeader">
           <div className="Subtitle">400 Beacon Street</div>
           <div className="Title">History of the House</div>
-          <div className="Intro">Watch these videos to learn about major renovations and restoration work spanning more than a century.</div>
+          <div className="Intro">Watch these videos to learn about major renovations and restoration work <br />spanning more than a century.</div>
         </div>
         <div className="Content">
           <CardGroup className="videos">
@@ -33,7 +33,7 @@ function Home() {
               <Link to={`${rootPath}/video/3`}>
                 <Card.Img variant="top" src={require('../assets/images/MBE_HH_thumb2015.jpg')} alt="..." />
                 <Card.Body>
-                  <Card.Title>2015-2023 Expansion</Card.Title>
+                  <Card.Title>2015–2023 Restoration</Card.Title>
                 </Card.Body>
               </Link>
             </Card>

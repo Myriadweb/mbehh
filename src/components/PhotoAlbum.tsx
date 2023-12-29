@@ -46,9 +46,11 @@ function PhotoAlbum() {
   }
 
   const zoomOut = () => {
-    setZoomLevel(zoomLevel - .1);
-    ImageWrapper.current?.centerView(zoomLevel);
-    console.log('zoomLevel', zoomLevel);
+    if (zoomLevel > 1) {
+      setZoomLevel(zoomLevel - .1);
+      ImageWrapper.current?.centerView(zoomLevel);
+      console.log('zoomLevel', zoomLevel);
+    }
   }
 
   const zoomIn = () => {

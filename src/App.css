@@ -43,7 +43,6 @@
 body {
   margin: 0;
   padding: 0;
-  overflow: hidden;
 }
 
 .App {
@@ -242,6 +241,7 @@ input.Zoom::-webkit-slider-thumb {
   font-size: 32px;
   font-style: italic;
   line-height: 1;
+  margin-bottom: 10px;
 }
 
 .Intro {
@@ -350,24 +350,35 @@ input.Zoom::-webkit-slider-thumb {
   padding: 0;
   position: absolute;
   right: 30px;
-  bottom: -20px;
-
+  bottom: -8px;
+}
+.Controls button img {
+  width: 40px;
+  height: auto;
 }
 .Controls .Zoom {
   width: calc(100% - 200px);
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
 }
-
 .Controls input.Zoom::-webkit-slider-thumb {
-  height: 40px;
-  width: 40px;
-  margin-top: -20px;
+  height: 32px;
+  width: 32px;
+  margin-top: -16px;
   background: #d59132 !important;
   box-shadow: none;
 }
+.Controls.paused .Zoom {
+  opacity: 1;
+}
 .ReplayVideo {
   position: absolute;
-  bottom: 10px;
+  bottom: 20px;
   right: 30px;
+}
+.ReplayVideo img {
+  width: 40px;
+  height: auto;
 }
 
 .react-transform-wrapper {

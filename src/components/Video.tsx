@@ -5,9 +5,9 @@ import '../App.css';
 import {rootPath} from "../config";
 import {ToggleButtonGroup, ToggleButton} from "react-bootstrap";
 const videoList = [
-  {id: 1, title: "1907 Expansion", video: "mbe_1907.mp4"},
-  {id: 2, title: "1908 Renovation", video: "mbe_1908.mp4"},
-  {id: 3, title: "2015-2023 Expansion", video: "mbe_2015_project_overview.mp4"}
+  {id: 1, title: "1907 Expansion", video: "mbe_1907.mp4", endstill: "MBE_HH_1907endstill.jpg"},
+  {id: 2, title: "1908 Renovation", video: "mbe_1908.mp4", endstill: "MBE_HH_1908endstill.jpg"},
+  {id: 3, title: "2015–2023 Restoration", video: "mbe_2015_project_overview.mp4", endstill: "MBE_HH_2000sendstill.jpg"}
 ]
 
 type ControlsProps = {
@@ -16,6 +16,7 @@ type ControlsProps = {
   playedSeconds: number;
   duration: number;
   playerRef: MutableRefObject<ReactPlayer>;
+
 };
 
 
@@ -34,7 +35,7 @@ const Controls = (props: ControlsProps) => {
     )
   }
   return (
-    <div className="Controls">
+    <div className={props.playing ? "Controls playing" : "Controls paused"}>
       <button onClick={() => props.setPlaying(!props.playing)}>
         {props.playing ? <Pause /> : <Play />}
       </button>
@@ -65,7 +66,7 @@ function Video() {
   const EndStillImage = () => {
     return (
       <div id="EndStillImage" className={`StillImage ${showStillImage ? 'active' : ''}`}>
-        <img src={require('../assets/images/video/MBE_HH_endstill.jpg')} alt="this" />
+        <img src={require(`../assets/images/video/${videoList[videoIndex].endstill}`)} alt="this" />
         <div className="ReplayVideo" onClick={() => {setShowStillImage(false); setPlaying(true)}}>
           <img src={require('../assets/images/video/MBE_HH_replay.png')} />
         </div>
@@ -114,12 +115,12 @@ function Video() {
               />
               <EndStillImage />
               <ToggleButtonGroup type="radio" name="options" defaultValue={0} className="ExpansionButtons">
-                <ToggleButton id="tbg-radio-1" value={0} active={expVideo === "mbe_2015_project_overview.mp4"} onClick={() => {setExpVideo("mbe_2015_project_overview.mp4"); setPlaying(true)}}>Project Overview</ToggleButton>
-                <ToggleButton id="tbg-radio-2" value={1} active={expVideo === "mbe_2015_systems_upgraded.mp4"} onClick={() => {setExpVideo("mbe_2015_systems_upgraded.mp4"); setPlaying(true)}}>Systems Upgraded</ToggleButton>
-                <ToggleButton id="tbg-radio-3" value={2} active={expVideo === "mbe_2015_porches_rebuilt.mp4"} onClick={() => {setExpVideo("mbe_2015_porches_rebuilt.mp4"); setPlaying(true)}}>Porches Rebuilt</ToggleButton>
-                <ToggleButton id="tbg-radio-4" value={3} active={expVideo === "mbe_2015_basement_transformed.mp4"} onClick={() => {setExpVideo("mbe_2015_basement_transformed.mp4"); setPlaying(true)}}>Basement Transformed</ToggleButton>
-                <ToggleButton id="tbg-radio-5" value={4} active={expVideo === "mbe_2015_rooms_restored.mp4"} onClick={() => {setExpVideo("mbe_2015_rooms_restored.mp4"); setPlaying(true)}}>Rooms Restored</ToggleButton>
-                <ToggleButton id="tbg-radio-6" value={5} active={expVideo === "mbe_2015_carriage_house.mp4"} onClick={() => {setExpVideo("mbe_2015_carriage_house.mp4"); setPlaying(true)}}>Carriage House</ToggleButton>
+                <ToggleButton id="tbg-radio-1" value={0} active={expVideo === "mbe_2015_project_overview.mp4"} onClick={() => {setExpVideo("mbe_2015_project_overview.mp4"); setShowStillImage(false); setPlaying(true)}}>Project Overview</ToggleButton>
+                <ToggleButton id="tbg-radio-2" value={1} active={expVideo === "mbe_2015_systems_upgraded.mp4"} onClick={() => {setExpVideo("mbe_2015_systems_upgraded.mp4"); setShowStillImage(false); setPlaying(true)}}>Systems Upgraded</ToggleButton>
+                <ToggleButton id="tbg-radio-3" value={2} active={expVideo === "mbe_2015_porches_rebuilt.mp4"} onClick={() => {setExpVideo("mbe_2015_porches_rebuilt.mp4"); setShowStillImage(false); setPlaying(true)}}>Porches Rebuilt</ToggleButton>
+                <ToggleButton id="tbg-radio-4" value={3} active={expVideo === "mbe_2015_basement_transformed.mp4"} onClick={() => {setExpVideo("mbe_2015_basement_transformed.mp4"); setShowStillImage(false); setPlaying(true)}}>Basement Transformed</ToggleButton>
+                <ToggleButton id="tbg-radio-5" value={4} active={expVideo === "mbe_2015_rooms_restored.mp4"} onClick={() => {setExpVideo("mbe_2015_rooms_restored.mp4"); setShowStillImage(false); setPlaying(true)}}>Rooms Restored</ToggleButton>
+                <ToggleButton id="tbg-radio-6" value={5} active={expVideo === "mbe_2015_carriage_house.mp4"} onClick={() => {setExpVideo("mbe_2015_carriage_house.mp4"); setShowStillImage(false); setPlaying(true)}}>Carriage House</ToggleButton>
               </ToggleButtonGroup>
             </div>
           )}
