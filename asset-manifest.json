@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/mbehh/static/css/main.97dc73b6.css",
-    "main.js": "/mbehh/static/js/main.d2feff6f.js",
+    "main.css": "/mbehh/static/css/main.56fd17d5.css",
+    "main.js": "/mbehh/static/js/main.fdc8449e.js",
     "static/media/mbe_2015_carriage_house.mp4": "/mbehh/static/media/mbe_2015_carriage_house.5832c47a62981441cf6d.mp4",
     "static/media/mbe_2015_porches_rebuilt.mp4": "/mbehh/static/media/mbe_2015_porches_rebuilt.9379bfb2e7349f777d76.mp4",
     "static/media/mbe_2015_project_overview.mp4": "/mbehh/static/media/mbe_2015_project_overview.63833e6ca4a5f1d8b593.mp4",
@@ -44,6 +44,9 @@
     "static/media/MBE_HH_02.png": "/mbehh/static/media/MBE_HH_02.8e2be2aa455679efa970.png",
     "static/media/MBE_HH_01.png": "/mbehh/static/media/MBE_HH_01.653428a4c569a85012ee.png",
     "static/media/MBE_HH_bkgd.jpg": "/mbehh/static/media/MBE_HH_bkgd.a2553cef5dced8bdcfed.jpg",
+    "static/media/MBE_HH_2000sendstill.jpg": "/mbehh/static/media/MBE_HH_2000sendstill.91be1d31ce61de69e37f.jpg",
+    "static/media/MBE_HH_1907endstill.jpg": "/mbehh/static/media/MBE_HH_1907endstill.7c68250863c7018b51a3.jpg",
+    "static/media/MBE_HH_1908endstill.jpg": "/mbehh/static/media/MBE_HH_1908endstill.f16f305d072e29e3f639.jpg",
     "static/media/MBE_HH_endstill.jpg": "/mbehh/static/media/MBE_HH_endstill.f16f305d072e29e3f639.jpg",
     "static/media/MBE_HH_thumb2015.jpg": "/mbehh/static/media/MBE_HH_thumb2015.efaee9bc5bc5b988a45f.jpg",
     "static/media/MBE_HH_thumb1907.jpg": "/mbehh/static/media/MBE_HH_thumb1907.3f7f62faeb7047d1d088.jpg",
@@ -56,11 +59,11 @@
     "static/media/Frutiger_Condensed.ttf": "/mbehh/static/media/Frutiger_Condensed.4cf8ef33ea7d9d5bd676.ttf",
     "static/media/Frutiger_Roman.ttf": "/mbehh/static/media/Frutiger_Roman.f13468548dc6d4cb5025.ttf",
     "index.html": "/mbehh/index.html",
-    "main.97dc73b6.css.map": "/mbehh/static/css/main.97dc73b6.css.map",
-    "main.d2feff6f.js.map": "/mbehh/static/js/main.d2feff6f.js.map"
+    "main.56fd17d5.css.map": "/mbehh/static/css/main.56fd17d5.css.map",
+    "main.fdc8449e.js.map": "/mbehh/static/js/main.fdc8449e.js.map"
   },
   "entrypoints": [
-    "static/css/main.97dc73b6.css",
-    "static/js/main.d2feff6f.js"
+    "static/css/main.56fd17d5.css",
+    "static/js/main.fdc8449e.js"
   ]
 }
