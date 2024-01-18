@@ -241,7 +241,6 @@ input.Zoom::-webkit-slider-thumb {
   font-size: 32px;
   font-style: italic;
   line-height: 1;
-  margin-bottom: 10px;
 }
 
 .Intro {
@@ -258,10 +257,8 @@ input.Zoom::-webkit-slider-thumb {
   display: none;
 }
 
-.HomeSubtitle {
-  font-size: 32px;
-  font-style: italic;
-  line-height: 1;
+.HomeHeader .Subtitle {
+  margin-bottom: 10px;
 }
 
 .HomeLink {
