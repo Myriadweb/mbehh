@@ -1,3 +1,3 @@
 import React from "react";
 
-export const rootPath = '/mbehh';
+export const rootPath = '';

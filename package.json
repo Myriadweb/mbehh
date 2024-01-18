@@ -26,7 +26,7 @@
     "typescript": "^4.4.2",
     "web-vitals": "^2.1.0"
   },
-  "homepage": "https://myriadweb.github.io/mbehh",
+  "homepage": ".",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -36,6 +36,7 @@
     "deploy": "gh-pages -d build",
     "dev": "concurrently -k \"BROWSER=none npm start\" \"npm:electron\"",
     "electron": "wait-on tcp:3000 && electron-forge start",
+    "electron:start": "concurrently -k \"cross-env BROWSER=none yarn start\" \"wait-on http://localhost:3000 && electronmon .\"",
     "package": "react-scripts build && electron-forge package",
     "make": "react-scripts build && electron-forge make",
     "electron:package:mac": "yarn build && electron-builder -m -c.extraMetadata.main=electron.js",
@@ -85,6 +86,7 @@
   },
   "devDependencies": {
     "concurrently": "^8.2.2",
+    "cross-env": "^7.0.3",
     "electron": "^27.1.2",
     "electron-builder": "^24.9.1",
     "electronmon": "^2.0.2",
