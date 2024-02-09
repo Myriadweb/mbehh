@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import {Routes, Route, Link, useLocation} from 'react-router-dom';
+import {Routes, Route, Link, useLocation, useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { rootPath } from "./config";
 import './App.css';
@@ -13,8 +13,20 @@ function App() {
     document.title = "House History";
   })
   let location = useLocation();
+  const timeoutRef = React.useRef(null);
+  const navigate = useNavigate();
+  const TIME_TO_SPLASH = 180000;
+  const handleResetTimeout = () => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+    // @ts-ignore
+    timeoutRef.current = setTimeout(() => {
+      navigate(rootPath);
+    }, TIME_TO_SPLASH);
+  };
   return (
-    <div className="App">
+    <div className="App" onClick={() => handleResetTimeout()}>
         <TransitionGroup>
           <CSSTransition key={location.pathname} classNames="fade" timeout={300}>
             <Routes>
