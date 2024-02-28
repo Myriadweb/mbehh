@@ -15,7 +15,7 @@ function App() {
   let location = useLocation();
   const timeoutRef = React.useRef(null);
   const navigate = useNavigate();
-  const TIME_TO_SPLASH = 180000;
+  const TIME_TO_SPLASH = 130000;
   const handleResetTimeout = () => {
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);

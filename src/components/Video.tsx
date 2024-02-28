@@ -22,7 +22,8 @@ type ControlsProps = {
 
 const Controls = (props: ControlsProps) => {
   const seek = (e: React.ChangeEvent<HTMLInputElement>) => {
-    props.playerRef.current.seekTo(+e.target.value, "seconds");
+    props.playerRef.current.seekTo(+e.target.value);
+
   };
   const Play = () => {
     return (
@@ -44,6 +45,7 @@ const Controls = (props: ControlsProps) => {
         type="range"
         value={props.playedSeconds}
         min="0"
+        step="any"
         max={props.duration}
         onChange={seek}
       />
@@ -57,12 +59,24 @@ function Video() {
   const [playing, setPlaying] = useState(true);
   const [durationSeconds, setDurationSeconds] = useState(0);
   const [playedSeconds, setPlayedSeconds] = useState(0);
+  const [loadedSeconds, setLoadedSeconds] = useState(0);
   // @ts-ignore
   const videoIndex = videoList.findIndex((data) => data.id === +videoParams?.id);
   const nextVideo = videoList[videoIndex + 1];
   const prevVideo = videoList[videoIndex - 1];
   const [expVideo, setExpVideo] = React.useState(videoList[videoIndex].video);
   const [showStillImage, setShowStillImage] = React.useState(false);
+  const [buffering, setBuffering] = React.useState(false);
+  const handleProgress = (state: { playedSeconds: number; loadedSeconds: number }) => {
+    setPlayedSeconds(state.playedSeconds);
+    setLoadedSeconds(state.loadedSeconds);
+    if (state.playedSeconds >= state.loadedSeconds) {
+      setBuffering(true);
+    }
+    if (state.playedSeconds <= state.loadedSeconds) {
+      setBuffering(false);
+    }
+  }
   const EndStillImage = () => {
     return (
       <div id="EndStillImage" className={`StillImage ${showStillImage ? 'active' : ''}`}>
@@ -101,7 +115,7 @@ function Video() {
                 width={1440}
                 height={810}
                 playing={playing}
-                onProgress={({ playedSeconds }) => setPlayedSeconds(playedSeconds)}
+                onProgress={(state) => handleProgress(state)}
                 onSeek={setPlayedSeconds}
                 onDuration={setDurationSeconds} // This is called when the player has the duration
                 onEnded={() => {setShowStillImage(true); setPlaying(false)}}
@@ -114,6 +128,7 @@ function Video() {
                 duration={durationSeconds}
               />
               <EndStillImage />
+              {!buffering && (<div className="buffering">Buffering</div>)}
               <ToggleButtonGroup type="radio" name="options" defaultValue={0} className="ExpansionButtons">
                 <ToggleButton id="tbg-radio-1" value={0} active={expVideo === "mbe_2015_project_overview.mp4"} onClick={() => {setExpVideo("mbe_2015_project_overview.mp4"); setShowStillImage(false); setPlaying(true)}}>Project Overview</ToggleButton>
                 <ToggleButton id="tbg-radio-2" value={1} active={expVideo === "mbe_2015_systems_upgraded.mp4"} onClick={() => {setExpVideo("mbe_2015_systems_upgraded.mp4"); setShowStillImage(false); setPlaying(true)}}>Systems Upgraded</ToggleButton>
@@ -133,11 +148,12 @@ function Video() {
                 controls={false}
                 width={1440}
                 height={810}
-                onProgress={({ playedSeconds }) => setPlayedSeconds(playedSeconds)}
+                onProgress={(state) => handleProgress(state)}
                 onSeek={setPlayedSeconds}
                 onDuration={setDurationSeconds} // This is called when the player has the duration
                 onEnded={() => {setShowStillImage(true); setPlaying(false)}}
-
+                onBuffer={() => {setBuffering(true)}}
+                onBufferEnd={() => {setBuffering(false)}}
               />
               <Controls
                 playerRef={playerRef}
@@ -147,6 +163,7 @@ function Video() {
                 duration={durationSeconds}
               />
               <EndStillImage />
+              {!buffering && (<div className="buffering">Buffering</div>)}
             </>
           )}
         </div>

@@ -245,7 +245,7 @@ input.Zoom::-webkit-slider-thumb {
 
 .Intro {
   font-size: 22px;
-  width: 900px;
+  width: 930px;
   margin: 0 auto 40px auto;
 }
 
@@ -335,10 +335,10 @@ input.Zoom::-webkit-slider-thumb {
 .Controls {
   position: absolute;
   width: 100%;
-  bottom: 30px;
+  bottom: 20px;
 }
 .MultiVideo .Controls {
-  bottom: 100px;
+  bottom: 90px;
 }
 .Controls button {
   background: transparent;
@@ -347,7 +347,7 @@ input.Zoom::-webkit-slider-thumb {
   padding: 0;
   position: absolute;
   right: 30px;
-  bottom: -8px;
+  bottom:0;
 }
 .Controls button img {
   width: 40px;
@@ -357,6 +357,7 @@ input.Zoom::-webkit-slider-thumb {
   width: calc(100% - 200px);
   opacity: 0;
   transition: opacity 1s ease-in-out;
+  padding: 10px 0;
 }
 .Controls input.Zoom::-webkit-slider-thumb {
   height: 32px;
@@ -507,6 +508,20 @@ input.Zoom::-webkit-slider-thumb {
   transition: opacity 250ms ease-in;
 }
 
+.buffering {
+  margin-top: 10px;
+  animation: flash 2s infinite;
+  position: absolute;
+  bottom: 5px;
+  width: 100%;
+  color: white;
+  font-size: 1.25em;
+  text-shadow: black 0 0 10px;
+}
+.MultiVideo .buffering {
+  bottom: 75px;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -540,5 +555,17 @@ input.Zoom::-webkit-slider-thumb {
   }
   to {
     box-shadow: white 0 0 20px;
+  }
+}
+
+@keyframes flash {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }
