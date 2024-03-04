@@ -128,7 +128,7 @@ function Video() {
                 duration={durationSeconds}
               />
               <EndStillImage />
-              {!buffering && (<div className="buffering">Buffering</div>)}
+              {buffering && (<div className="buffering">Buffering</div>)}
               <ToggleButtonGroup type="radio" name="options" defaultValue={0} className="ExpansionButtons">
                 <ToggleButton id="tbg-radio-1" value={0} active={expVideo === "mbe_2015_project_overview.mp4"} onClick={() => {setExpVideo("mbe_2015_project_overview.mp4"); setShowStillImage(false); setPlaying(true)}}>Project Overview</ToggleButton>
                 <ToggleButton id="tbg-radio-2" value={1} active={expVideo === "mbe_2015_systems_upgraded.mp4"} onClick={() => {setExpVideo("mbe_2015_systems_upgraded.mp4"); setShowStillImage(false); setPlaying(true)}}>Systems Upgraded</ToggleButton>
@@ -163,7 +163,7 @@ function Video() {
                 duration={durationSeconds}
               />
               <EndStillImage />
-              {!buffering && (<div className="buffering">Buffering</div>)}
+              {buffering && (<div className="buffering">Buffering</div>)}
             </>
           )}
         </div>
