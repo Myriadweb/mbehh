@@ -16,14 +16,15 @@ type ControlsProps = {
   playedSeconds: number;
   duration: number;
   playerRef: MutableRefObject<ReactPlayer>;
-
 };
 
 const Controls = (props: ControlsProps) => {
+  const controlsRef = useRef<HTMLInputElement>(null);
   const seek = (e: React.ChangeEvent<HTMLInputElement>) => {
     props.playerRef.current.seekTo(+e.target.value);
   };
   const Play = () => {
+    controlsRef.current?.setAttribute("value", props.playedSeconds.toString());
     return (
       <img src={require('../assets/images/video/MBE_HH_play.png')} alt="play" />
     )
@@ -33,12 +34,14 @@ const Controls = (props: ControlsProps) => {
       <img src={require('../assets/images/video/MBE_HH_pause.png')} alt="pause" />
     )
   }
+
   return (
     <div className={props.playing ? "Controls playing" : "Controls paused"}>
       <button onClick={() => props.setPlaying(!props.playing)}>
         {props.playing ? <Pause /> : <Play />}
       </button>
       <input
+        ref={controlsRef}
         className="Zoom"
         type="range"
         min="0"
