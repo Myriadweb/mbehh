@@ -19,11 +19,9 @@ type ControlsProps = {
 
 };
 
-
 const Controls = (props: ControlsProps) => {
   const seek = (e: React.ChangeEvent<HTMLInputElement>) => {
     props.playerRef.current.seekTo(+e.target.value);
-
   };
   const Play = () => {
     return (
@@ -43,7 +41,6 @@ const Controls = (props: ControlsProps) => {
       <input
         className="Zoom"
         type="range"
-        value={props.playedSeconds}
         min="0"
         step="any"
         max={props.duration}
