@@ -366,7 +366,7 @@ input.Zoom::-webkit-slider-thumb {
   background: #d59132 !important;
   box-shadow: none;
 }
-.Controls.paused .Zoom {
+.Controls.paused:not(.restart) .Zoom {
   opacity: 1;
 }
 .ReplayVideo {

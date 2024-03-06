@@ -1,4 +1,4 @@
-import React, {useRef, useState, MutableRefObject, Dispatch, SetStateAction} from 'react';
+import React, {useRef, useState, MutableRefObject, Dispatch, SetStateAction, useEffect} from 'react';
 import ReactPlayer from "react-player";
 import { Routes, Route, Link, useParams, To} from 'react-router-dom';
 import '../App.css';
@@ -20,11 +20,12 @@ type ControlsProps = {
 
 const Controls = (props: ControlsProps) => {
   const controlsRef = useRef<HTMLInputElement>(null);
+  const [value, setValue] = useState(0);
   const seek = (e: React.ChangeEvent<HTMLInputElement>) => {
     props.playerRef.current.seekTo(+e.target.value);
+    setValue(+e.target.value);
   };
   const Play = () => {
-    controlsRef.current?.setAttribute("value", props.playedSeconds.toString());
     return (
       <img src={require('../assets/images/video/MBE_HH_play.png')} alt="play" />
     )
@@ -34,10 +35,9 @@ const Controls = (props: ControlsProps) => {
       <img src={require('../assets/images/video/MBE_HH_pause.png')} alt="pause" />
     )
   }
-
   return (
-    <div className={props.playing ? "Controls playing" : "Controls paused"}>
-      <button onClick={() => props.setPlaying(!props.playing)}>
+    <div className={`${props.playing ? "Controls playing" : "Controls paused"} ${Math.floor(props.playedSeconds) === Math.floor(props.duration) ? "restart" : ""}`}>
+      <button onClick={() => {props.setPlaying(!props.playing); setValue(props.playedSeconds)} }>
         {props.playing ? <Pause /> : <Play />}
       </button>
       <input
@@ -45,7 +45,8 @@ const Controls = (props: ControlsProps) => {
         className="Zoom"
         type="range"
         min="0"
-        step="any"
+        step="1"
+        value={value}
         max={props.duration}
         onChange={seek}
       />
@@ -81,7 +82,7 @@ function Video() {
     return (
       <div id="EndStillImage" className={`StillImage ${showStillImage ? 'active' : ''}`}>
         <img src={require(`../assets/images/video/${videoList[videoIndex].endstill}`)} alt="this" />
-        <div className="ReplayVideo" onClick={() => {setShowStillImage(false); setPlaying(true)}}>
+        <div className="ReplayVideo" onClick={() => {setShowStillImage(false); setPlaying(true);}}>
           <img src={require('../assets/images/video/MBE_HH_replay.png')} />
         </div>
       </div>
